@@ -25,6 +25,19 @@ void main(List<String> arguments) {
 
   ca_Samiya.Transfer(ca_Ali, 10000);
 
+  var sa_Maryam = SavingAccount(200000); // account opened
+  sa_Maryam.account_title = "Maryam";
+  sa_Maryam.DepositCash(5000);
+  sa_Maryam.DepositCash(100000);
+
+  var sa_Mesum = SalaryAccount();
+  sa_Mesum.account_title = "Mesum";
+  sa_Mesum.DepositCash(50000);
+
+  var ca_Arsalan = CurrentAccount();
+  ca_Arsalan.account_title = "Arsalan";
+  ca_Arsalan.DepositCash(5000);
+
   // var sa = SalaryAccount();
   // sa.DepositCash(-10000);
   // sa.WithdrawCash(15000);
@@ -41,7 +54,7 @@ class BankAccount {
   String account_title = "";
 
   void DepositCash(double cash) {
-    if (cash < 0) {
+    if (cash <= 0) {
       print("${account_title} Invalid amount entered.");
     }
     else {
@@ -53,7 +66,7 @@ class BankAccount {
   }
 
   void WithdrawCash(double cash) {
-    if (cash < 0) {
+    if (cash <= 0) {
       print("${account_title} Invalid amount entered.");
     }
     else if (cash > balance) {
@@ -109,11 +122,37 @@ class SavingAccount extends BankAccount {
   SavingAccount(double openbalance) {
     opening_balance = openbalance;
   }
+
+  @override
+  void DepositCash(double cash) {
+    if (cash <= 0) {
+      print("${account_title} Invalid amount entered.");
+    }
+    else {
+      balance = opening_balance + balance + cash + (cash * 1 / 100);
+      opening_balance = 0;
+      print("${account_title} You have deposited ${cash}.");
+      print("${account_title} Your new balance is ${balance}.");
+    }
+  }
 }
 
 class SalaryAccount extends BankAccount {
   @override
   double opening_balance = 25000;
+  
+  @override
+  void DepositCash(double cash) {
+    if (cash <= 0) {
+      print("${account_title} Invalid amount entered.");
+    }
+    else {
+      balance = opening_balance + balance + cash - (cash * 1 / 100);
+      opening_balance = 0;
+      print("${account_title} You have deposited ${cash}.");
+      print("${account_title} Your new balance is ${balance}.");
+    }
+  }
 }
 
 class ChildAccount extends BankAccount {
