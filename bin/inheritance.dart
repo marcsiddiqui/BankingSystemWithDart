@@ -29,6 +29,7 @@ void main(List<String> arguments) {
   sa_Maryam.account_title = "Maryam";
   sa_Maryam.DepositCash(5000);
   sa_Maryam.DepositCash(100000);
+  sa_Maryam.WithdrawCash(3000);
 
   var sa_Mesum = SalaryAccount();
   sa_Mesum.account_title = "Mesum";
@@ -38,12 +39,10 @@ void main(List<String> arguments) {
   ca_Arsalan.account_title = "Arsalan";
   ca_Arsalan.DepositCash(5000);
 
-  // var sa = SalaryAccount();
-  // sa.DepositCash(-10000);
-  // sa.WithdrawCash(15000);
-
-  // var sva = SavingAccount(100000);
-  // sva.DepositCash(10000);
+  var sa_Usman = SalaryAccount();
+  sa_Usman.account_title = "Usman";
+  sa_Usman.DepositCash(50000);
+  sa_Usman.WithdrawCash(25000);
 }
 
 class BankAccount {
@@ -52,6 +51,7 @@ class BankAccount {
   String account_number = "MCB354034234782389";
   String DebitCartType = "Silver";
   String account_title = "";
+  double withdraw_limit = 5000;
 
   void DepositCash(double cash) {
     if (cash <= 0) {
@@ -66,7 +66,10 @@ class BankAccount {
   }
 
   void WithdrawCash(double cash) {
-    if (cash <= 0) {
+    if (cash > withdraw_limit) {
+      print("${account_title} Enter amount is more than limit, your limit is ${withdraw_limit}.");
+    }
+    else if (cash <= 0) {
       print("${account_title} Invalid amount entered.");
     }
     else if (cash > balance) {
@@ -107,7 +110,6 @@ class BankAccount {
       print("${account_title}, transfer amount is invalid");
     }
   }
-
 }
 
 class CurrentAccount extends BankAccount {
@@ -118,6 +120,9 @@ class CurrentAccount extends BankAccount {
 class SavingAccount extends BankAccount {
   @override
   double opening_balance = 100000;
+
+  @override
+  double withdraw_limit = 0;
 
   SavingAccount(double openbalance) {
     opening_balance = openbalance;
@@ -140,6 +145,9 @@ class SavingAccount extends BankAccount {
 class SalaryAccount extends BankAccount {
   @override
   double opening_balance = 25000;
+
+  @override
+  double withdraw_limit = 25000;
   
   @override
   void DepositCash(double cash) {
@@ -158,4 +166,7 @@ class SalaryAccount extends BankAccount {
 class ChildAccount extends BankAccount {
   @override
   double opening_balance = 0;
+
+  @override
+  double withdraw_limit = 0;
 }
