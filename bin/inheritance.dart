@@ -1,5 +1,3 @@
-import 'package:inheritance/inheritance.dart' as inheritance;
-
 void main(List<String> arguments) {
 
   // var ca_Summiyal = CurrentAccount();
@@ -133,14 +131,17 @@ class BankAccount {
 
 class CurrentAccount extends BankAccount {
   @override
+  // ignore: overridden_fields
   double openingBalance = 5000;
 }
 
 class SavingAccount extends BankAccount {
   @override
+  // ignore: overridden_fields
   double openingBalance = 100000;
 
   @override
+  // ignore: overridden_fields
   double withdrawLimit = 0;
 
   SavingAccount(double openbalance) {
@@ -163,9 +164,11 @@ class SavingAccount extends BankAccount {
 
 class SalaryAccount extends BankAccount {
   @override
+  // ignore: overridden_fields
   double openingBalance = 25000;
 
   @override
+  // ignore: overridden_fields
   double withdrawLimit = 25000;
   
   @override
@@ -184,22 +187,24 @@ class SalaryAccount extends BankAccount {
 
 class ChildAccount extends BankAccount {
   @override
+  // ignore: overridden_fields
   double openingBalance = 0;
 
   @override
+  // ignore: overridden_fields
   double withdrawLimit = 0;
 }
 
 /*  ABSTRACTION   (DATA HIDING)*/
 
-abstract class vehicle {
+abstract class Vehicle {
   void break_();
   void speed();
   void steer();
   void ignition();
 }
 
-class Car implements vehicle {
+class Car implements Vehicle {
   @override
   void break_() {
     print("Break applied on Car.");
@@ -221,7 +226,7 @@ class Car implements vehicle {
   }
 }
 
-class Bus implements vehicle {
+class Bus implements Vehicle {
   @override
   void break_() {
     print("Break applied on Bus.");
@@ -243,7 +248,7 @@ class Bus implements vehicle {
   }
 }
 
-class Tank implements vehicle {
+class Tank implements Vehicle {
   @override
   void break_() {
     print("Break applied on Tank.");
