@@ -3,270 +3,264 @@ import 'package:inheritance/inheritance.dart' as inheritance;
 void main(List<String> arguments) {
 
   // var ca_Summiyal = CurrentAccount();
-  // ca_Summiyal.account_title = "Summiyal";
-  // ca_Summiyal.DepositCash(500);
+  // ca_Summiyal.accountTitle = "Summiyal";
+  // ca_Summiyal.depositCash(500);
 
   // var ca_Samiya = CurrentAccount();
-  // ca_Samiya.account_title = "Samiya";
-  // ca_Samiya.DepositCash(1000);
+  // ca_Samiya.accountTitle = "Samiya";
+  // ca_Samiya.depositCash(1000);
 
   // var ca_Ali = CurrentAccount();
-  // ca_Ali.account_title = "Ali";
-  // ca_Ali.DepositCash(10000);    // 24-06-2024
-  // ca_Ali.DepositCash(5000);     // 25-06-2024
-  // ca_Ali.WithdrawCash(9000);    // 26-06-2024
-  // ca_Ali.WithdrawCash(10000);    // 28-06-2024
-  // ca_Ali.WithdrawCash(810);    // 28-06-2024
-  // ca_Ali.DepositCash(10000);
-  // ca_Ali.DeductDebitCardCharges();
-  // ca_Ali.Transfer(ca_Summiyal, 2000);
+  // ca_Ali.accountTitle = "Ali";
+  // ca_Ali.depositCash(10000);    // 24-06-2024
+  // ca_Ali.depositCash(5000);     // 25-06-2024
+  // ca_Ali.withdrawCash(9000);    // 26-06-2024
+  // ca_Ali.withdrawCash(10000);    // 28-06-2024
+  // ca_Ali.withdrawCash(810);    // 28-06-2024
+  // ca_Ali.depositCash(10000);
+  // ca_Ali.deductDebitCardCharges();
+  // ca_Ali.transfer(ca_Summiyal, 2000);
 
-  // ca_Summiyal.Transfer(ca_Samiya, 5000);
+  // ca_Summiyal.transfer(ca_Samiya, 5000);
 
-  // ca_Samiya.Transfer(ca_Ali, 10000);
+  // ca_Samiya.transfer(ca_Ali, 10000);
 
   // var sa_Maryam = SavingAccount(200000); // account opened
-  // sa_Maryam.account_title = "Maryam";
-  // sa_Maryam.DepositCash(5000);
-  // sa_Maryam.DepositCash(100000);
-  // sa_Maryam.WithdrawCash(3000);
+  // sa_Maryam.accountTitle = "Maryam";
+  // sa_Maryam.depositCash(5000);
+  // sa_Maryam.depositCash(100000);
+  // sa_Maryam.withdrawCash(3000);
 
   // var sa_Mesum = SalaryAccount();
-  // sa_Mesum.account_title = "Mesum";
-  // sa_Mesum.DepositCash(50000);
+  // sa_Mesum.accountTitle = "Mesum";
+  // sa_Mesum.depositCash(50000);
 
   // var ca_Arsalan = CurrentAccount();
-  // ca_Arsalan.account_title = "Arsalan";
-  // ca_Arsalan.DepositCash(5000);
+  // ca_Arsalan.accountTitle = "Arsalan";
+  // ca_Arsalan.depositCash(5000);
 
   // var sa_Usman = SalaryAccount();
-  // sa_Usman.account_title = "Usman";
-  // sa_Usman.DepositCash(50000);
-  // sa_Usman.WithdrawCash(25000);
+  // sa_Usman.accountTitle = "Usman";
+  // sa_Usman.depositCash(50000);
+  // sa_Usman.withdrawCash(25000);
 
   var car = Car();
-  car.Break();
-  car.Speed();
-  car.Steer();
-  car.Ignition();
+  car.break_();
+  car.speed();
+  car.steer();
+  car.ignition();
 
   var bus = Bus();
-  bus.Break();
-  bus.Speed();
-  bus.Steer();
-  bus.Ignition();
+  bus.break_();
+  bus.speed();
+  bus.steer();
+  bus.ignition();
 
   var tank = Tank();
-  tank.Break();
-  tank.Speed();
-  tank.Steer();
-  tank.Ignition();
+  tank.break_();
+  tank.speed();
+  tank.steer();
+  tank.ignition();
 
 }
 
 class BankAccount {
-  double opening_balance = 0;
+  double openingBalance = 0;
   double balance = 0;
-  String account_number = "MCB354034234782389";
-  String DebitCartType = "Silver";
-  String account_title = "";
-  double withdraw_limit = 5000;
+  String accountNumber = "MCB354034234782389";
+  String debitCartType = "Silver";
+  String accountTitle = "";
+  double withdrawLimit = 5000;
 
-  void DepositCash(double cash) {
+  void depositCash(double cash) {
     if (cash <= 0) {
-      print("${account_title} Invalid amount entered.");
+      print("$accountTitle Invalid amount entered.");
     }
     else {
-      balance = opening_balance + balance + cash;
-      opening_balance = 0;
-      print("${account_title} You have deposited ${cash}.");
-      print("${account_title} Your new balance is ${balance}.");
+      balance = openingBalance + balance + cash;
+      openingBalance = 0;
+      print("$accountTitle You have deposited $cash.");
+      print("$accountTitle Your new balance is $balance.");
     }
   }
 
-  void WithdrawCash(double cash) {
-    if (cash > withdraw_limit) {
-      print("${account_title} Enter amount is more than limit, your limit is ${withdraw_limit}.");
+  void withdrawCash(double cash) {
+    if (cash > withdrawLimit) {
+      print("$accountTitle Enter amount is more than limit, your limit is $withdrawLimit.");
     }
     else if (cash <= 0) {
-      print("${account_title} Invalid amount entered.");
+      print("$accountTitle Invalid amount entered.");
     }
     else if (cash > balance) {
-      print("${account_title} insufficient balance");
+      print("$accountTitle insufficient balance");
     }
     else {
-      var transaction_fee = cash * 1 / 100;
-      balance = balance - cash - transaction_fee;
-      print("${account_title} You have Withdrawn ${cash}.");
-      print("${account_title} Your new balance is ${balance}.");
+      var transactionFee = cash * 1 / 100;
+      balance = balance - cash - transactionFee;
+      print("$accountTitle You have Withdrawn $cash.");
+      print("$accountTitle Your new balance is $balance.");
     }
   }
 
-  void DeductDebitCardCharges() {
+  void deductDebitCardCharges() {
 
     var debitCardCharges = 2500;
 
-    if (DebitCartType == "Gold") {
+    if (debitCartType == "Gold") {
       debitCardCharges = 5000;
     }
-    else if (DebitCartType == "Platinium") {
+    else if (debitCartType == "Platinium") {
       debitCardCharges = 7000;
     }
 
     balance = balance - debitCardCharges;
-    print("balance after debit card charges ${balance}");
+    print("balance after debit card charges $balance");
   }
 
-  void Transfer(BankAccount beneficiary, double amount) {
+  void transfer(BankAccount beneficiary, double amount) {
     if (amount > 0) {
       beneficiary.balance = beneficiary.balance + amount;
-      print("${beneficiary.account_title}, You have received ${amount} from ${account_title}, new balance is ${beneficiary.balance}");
+      print("${beneficiary.accountTitle}, You have received $amount from $accountTitle, new balance is ${beneficiary.balance}");
 
       balance = balance - amount;
-      print("${account_title}, Transfer successful amount to Rs. ${amount} to account ${beneficiary.account_title}, new balance is ${balance}");
+      print("$accountTitle, Transfer successful amount to Rs. $amount to account ${beneficiary.accountTitle}, new balance is $balance");
     }
     else {
-      print("${account_title}, transfer amount is invalid");
+      print("$accountTitle, transfer amount is invalid");
     }
   }
 }
 
 class CurrentAccount extends BankAccount {
   @override
-  double opening_balance = 5000;
+  double openingBalance = 5000;
 }
 
 class SavingAccount extends BankAccount {
   @override
-  double opening_balance = 100000;
+  double openingBalance = 100000;
 
   @override
-  double withdraw_limit = 0;
+  double withdrawLimit = 0;
 
   SavingAccount(double openbalance) {
-    opening_balance = openbalance;
+    openingBalance = openbalance;
   }
 
   @override
-  void DepositCash(double cash) {
+  void depositCash(double cash) {
     if (cash <= 0) {
-      print("${account_title} Invalid amount entered.");
+      print("$accountTitle Invalid amount entered.");
     }
     else {
-      balance = opening_balance + balance + cash + (cash * 1 / 100);
-      opening_balance = 0;
-      print("${account_title} You have deposited ${cash}.");
-      print("${account_title} Your new balance is ${balance}.");
+      balance = openingBalance + balance + cash + (cash * 1 / 100);
+      openingBalance = 0;
+      print("$accountTitle You have deposited $cash.");
+      print("$accountTitle Your new balance is $balance.");
     }
   }
 }
 
 class SalaryAccount extends BankAccount {
   @override
-  double opening_balance = 25000;
+  double openingBalance = 25000;
 
   @override
-  double withdraw_limit = 25000;
+  double withdrawLimit = 25000;
   
   @override
-  void DepositCash(double cash) {
+  void depositCash(double cash) {
     if (cash <= 0) {
-      print("${account_title} Invalid amount entered.");
+      print("$accountTitle Invalid amount entered.");
     }
     else {
-      balance = opening_balance + balance + cash - (cash * 1 / 100);
-      opening_balance = 0;
-      print("${account_title} You have deposited ${cash}.");
-      print("${account_title} Your new balance is ${balance}.");
+      balance = openingBalance + balance + cash - (cash * 1 / 100);
+      openingBalance = 0;
+      print("$accountTitle You have deposited $cash.");
+      print("$accountTitle Your new balance is $balance.");
     }
   }
 }
 
 class ChildAccount extends BankAccount {
   @override
-  double opening_balance = 0;
+  double openingBalance = 0;
 
   @override
-  double withdraw_limit = 0;
+  double withdrawLimit = 0;
 }
 
 /*  ABSTRACTION   (DATA HIDING)*/
 
 abstract class vehicle {
-  void Break();
-  void Speed();
-  void Steer();
-  void Ignition();
+  void break_();
+  void speed();
+  void steer();
+  void ignition();
 }
 
 class Car implements vehicle {
   @override
-  void Break() {
+  void break_() {
     print("Break applied on Car.");
   }
 
   @override
-  void Ignition() {
+  void ignition() {
     print("Ignition started in Car.");
   }
 
   @override
-  void Speed() {
+  void speed() {
     print("Speed increased in Car.");
   }
 
   @override
-  void Steer() {
+  void steer() {
     print("Steering the Car.");
   }
 }
 
 class Bus implements vehicle {
   @override
-  void Break() {
+  void break_() {
     print("Break applied on Bus.");
   }
 
   @override
-  void Ignition() {
+  void ignition() {
     print("Ignition started in Bus.");
   }
 
   @override
-  void Speed() {
+  void speed() {
     print("Speed increased in Bus.");
   }
 
   @override
-  void Steer() {
+  void steer() {
     print("Steering the Bus.");
   }
 }
 
 class Tank implements vehicle {
   @override
-  void Break() {
+  void break_() {
     print("Break applied on Tank.");
   }
 
   @override
-  void Ignition() {
+  void ignition() {
     print("Ignition started in Tank.");
   }
 
   @override
-  void Speed() {
+  void speed() {
     print("Speed increased in Tank.");
   }
 
   @override
-  void Steer() {
+  void steer() {
     print("Steering the Tank.");
-  }
-}
-
-class a {
-  void Test1() {
-    print("test1");
   }
 }
